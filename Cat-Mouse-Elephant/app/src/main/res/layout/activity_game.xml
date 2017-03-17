@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="edu.columbia.ee.cat_mouse_elephant.GameActivity">
+
+    <ImageView
+        android:id="@+id/backgroudImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/garden"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+
+
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="-1dp" />
+
+    <TextView
+        android:id="@+id/playerTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="200dp"
+        android:text="Player"
+        android:textColor="#ff6ec7"
+        android:textSize="20sp"
+        android:background="@android:color/holo_orange_light"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/computerTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="60dp"
+        android:layout_marginTop="200dp"
+        android:text="coumputer"
+        android:textColor="#ff6ec7"
+        android:textSize="20sp"
+        android:background="@android:color/holo_blue_bright"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="60dp" />
+
+    <TextView
+        android:id="@+id/resultTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="100dp"
+
+        android:text="result:"
+        android:textColor="#ff6ec7"
+        android:textSize="25sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+         />
+
+    <TextView
+        android:id="@+id/roundTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="130dp"
+
+        android:text="round:"
+        android:textColor="#ff2400"
+        android:textSize="25sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/mouseBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="41dp"
+        android:layout_marginBottom="0dp"
+        android:layout_marginLeft="32dp"
+        android:text="mouse"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <Button
+        android:id="@+id/catBtn"
+        android:layout_width="93dp"
+        android:layout_height="41dp"
+        android:layout_marginBottom="0dp"
+        android:text="cat"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/mouseBtn"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintRight_toLeftOf="@+id/elephantBtn"
+        android:layout_marginRight="8dp" />
+
+    <Button
+        android:id="@+id/elephantBtn"
+        android:layout_width="96dp"
+        android:layout_height="41dp"
+        android:text="elephant"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="0dp"
+        android:layout_marginRight="32dp"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <ImageView
+        android:id="@+id/playerImgView"
+        android:layout_width="180dp"
+        android:layout_height="350dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="200dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/computerImgView"
+        android:layout_width="180dp"
+        android:layout_height="350dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="200dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</android.support.constraint.ConstraintLayout>
