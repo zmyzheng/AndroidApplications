@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Cat-Mouse-Elephant</string>
+    <string name="game_statistics">Game statistics</string>
+    <string name="clear_history">Clear History</string>
 </resources>

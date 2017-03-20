@@ -1,5 +1,6 @@
 package edu.columbia.ee.cat_mouse_elephant;
 
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class GameActivity extends AppCompatActivity {
+
     private ImageView playerImgView, computerImgView;
     private Button mouseBtn, catBtn, elephantBtn;
 
@@ -25,10 +27,14 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-
+        //initialize button
         mouseBtn = (Button) findViewById(R.id.mouseBtn);
         catBtn = (Button) findViewById(R.id.catBtn);
         elephantBtn = (Button) findViewById(R.id.elephantBtn);
+        //set click listener
+        mouseBtn.setOnClickListener(myOnClickListener);
+        catBtn.setOnClickListener(myOnClickListener);
+        elephantBtn.setOnClickListener(myOnClickListener);
 
         //initialize imgView
         playerImgView = (ImageView) findViewById(R.id.playerImgView);
@@ -38,9 +44,7 @@ public class GameActivity extends AppCompatActivity {
         resultTextView = (TextView) findViewById(R.id.resultTextView);
         roundTextView = (TextView) findViewById(R.id.roundTextView);
 
-        mouseBtn.setOnClickListener(myOnClickListener);
-        catBtn.setOnClickListener(myOnClickListener);
-        elephantBtn.setOnClickListener(myOnClickListener);
+
 
         //declare the audio resource to these two MediaPlayer objects
         mp_background = MediaPlayer.create(this, R.raw.main);
@@ -60,8 +64,6 @@ public class GameActivity extends AppCompatActivity {
 
         @Override
         public void onClick(View v) {
-            // TODO Auto-generated method stub
-
             //play button sound here
             mp_button.start();
 
@@ -70,8 +72,6 @@ public class GameActivity extends AppCompatActivity {
             count++;//
 
             int player = 0;
-            //store times of game in device
-//            storeData(count+"");
 
             switch(v.getId()){
                 case R.id.mouseBtn:
@@ -103,16 +103,29 @@ public class GameActivity extends AppCompatActivity {
             if(computer == player){
                 resultTextView.setText("Result: " + "Tied!");
                 roundTextView.setText("Round: " + count);
+                this.putToRecord("tied");
             }
             else if(computer == player + 1 || computer == player -2){
                 resultTextView.setText("Result: " + "Lose!");
                 roundTextView.setText("Round: " + count);
+                this.putToRecord("lose");
             }
             else{
                 resultTextView.setText("Result: " + "Win!");
                 roundTextView.setText("Round: " + count);
+                this.putToRecord("win");
             }
 
         }
+
+        private void putToRecord(String res) {
+            SharedPreferences pref = getSharedPreferences("dataPref", MODE_PRIVATE);
+            // create SharedPreferences.Editor to modify data
+            SharedPreferences.Editor editor = pref.edit();
+            editor.putInt(res, pref.getInt(res, 0)+1);
+            editor.apply();
+        }
     }
+
+
 }
