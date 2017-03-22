@@ -67,7 +67,7 @@ public class GameActivity extends AppCompatActivity {
             //play button sound here
             mp_button.start();
 
-            // get a random number form 1 to 3
+            // get a random number form 0 to 2
             int computer = (int) (Math.random() * 3);
             count++;//
 

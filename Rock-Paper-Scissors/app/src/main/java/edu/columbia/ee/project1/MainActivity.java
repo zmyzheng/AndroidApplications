@@ -1,5 +1,6 @@
 package edu.columbia.ee.project1;
 
+import android.content.Context;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,6 +8,11 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStreamReader;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -55,6 +61,9 @@ public class MainActivity extends AppCompatActivity {
         //play background music here
         mp_background.start();
 
+        String times = getGameCount();
+        count_tv.setText("Round: "+ times);
+
     }
 
     //added
@@ -71,8 +80,8 @@ public class MainActivity extends AppCompatActivity {
             int rand = (int) (Math.random() * 3 + 1);
             count++;//
 
-            //store times of game in device
-//            storeData(count+"");
+//            store times of game in device
+            storeData(count+"");
 
             switch (rand) {
                 /**
@@ -142,6 +151,41 @@ public class MainActivity extends AppCompatActivity {
                     break;
             }
         }
+    }
+
+
+    //Store data locally
+    public void storeData(String count)
+    {
+        FileOutputStream outputStream;
+        try {
+            outputStream = openFileOutput("record.txt", Context.MODE_PRIVATE);
+            outputStream.write(count.getBytes());
+            outputStream.write(System.getProperty("line.separator").getBytes());
+            outputStream.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    //get local data
+    private String getGameCount(){
+        FileInputStream inputStream;
+        String result = "";
+        try{
+            inputStream = openFileInput("record.txt");
+            InputStreamReader isr = new InputStreamReader(inputStream, "UTF-8");
+            BufferedReader reader = new BufferedReader(isr);
+            StringBuilder sb = new StringBuilder();
+            while((result = reader.readLine()) != null){
+                sb.append(result).append("\n");
+            }
+            inputStream.close();
+            result = sb.toString();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return result;
     }
 
     @Override
